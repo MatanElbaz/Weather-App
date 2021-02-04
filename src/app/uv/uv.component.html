@@ -1,0 +1,22 @@
+<div *ngIf='resultFound()'>
+  <h1 class="center">Current UV data for {{currentWeather.name}}</h1>
+  <mat-card *ngFor='let l of uv' class="mat-elevation-z18">
+    <mat-card-header>
+      <mat-card-title>
+        <h2>{{l.date_iso | date:'MMM d, y, h:mm:ss a'}}</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <span>
+            UV Index: {{l.value}}
+          </span>
+        </mat-list-item>        
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div *ngIf='!resultFound()'>
+  <h1 class="center">{{msg || 'Failed to get weather.'}}</h1>
+</div>
